@@ -1,6 +1,12 @@
 <h1>Profil</h1>
-<ul>
-    <li>User name : <%= @user.name%></li>
-    <li>User email : <%= @user.email%></li>
+
+<h2 class="text-center">About <%= @user.firstName%> <%= @user.name%> : </h2>
+
+<ul class="list-group mx-4">
+    <li class="list-group-item">Id : <%= @user.id %></li>
+    <li class="list-group-item">Email : <%= @user.email%></li>
+    <li class="list-group-item">Age : <%= @user.age%> years old</li>
+    <li class="list-group-item">Description : <%= @user.description%></li>
+    <li class="list-group-item">City : <%= @user.city.name %></li>
 <ul>
 
