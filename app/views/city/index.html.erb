@@ -1,0 +1,7 @@
+<h1>City index</h1>
+
+<ul class="list-group m-4">
+    <% @cities.each do |city| %>
+         <li class="list-group-item list-group-item-action"><%= link_to city.name, city %></li>
+    <% end %>
+</ul>
