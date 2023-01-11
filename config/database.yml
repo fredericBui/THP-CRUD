@@ -1,3 +1,5 @@
+<% require 'dotenv' %>
+<% Dotenv.load('.env') %>
 # PostgreSQL. Versions 9.3 and up are supported.
 #
 # Install the pg driver:
@@ -24,6 +26,11 @@ default: &default
 development:
   <<: *default
   database: the_gossip_project_development
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -58,6 +65,11 @@ development:
 test:
   <<: *default
   database: the_gossip_project_test
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -82,5 +94,5 @@ test:
 production:
   <<: *default
   database: the_gossip_project_production
-  username: the_gossip_project
-  password: <%= ENV["THE_GOSSIP_PROJECT_DATABASE_PASSWORD"] %>
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
