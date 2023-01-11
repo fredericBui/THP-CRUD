@@ -4,8 +4,9 @@
         <div class="card-body">
             <h2 class="card-text"><%= gossip.title %></h2>
             <p class="card-text"><%= gossip.content %></p>
-            <p> Auteur : <%= link_to gossip.user.name, controller: "profil", user: gossip.user.name %> </p>
-            <p> Ville de l'auteur : <%= gossip.user.city.name %></p>
+            <p> Auteur : <%= link_to "#{gossip.user.firstName} #{gossip.user.name}", controller: "profil", action: "show", id: gossip.user.id %> </p>
+            <p> Ville de l'auteur :  <%= link_to gossip.user.city.name, controller: "city", action: "show", id: gossip.user.city.id %></p>
+            <%= link_to "View", gossip %>
         </div>
     </div>
 <% end %>

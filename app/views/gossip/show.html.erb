@@ -1,0 +1,11 @@
+<h1>Gossip</h1>
+<div class="card mx-auto my-3" style="width: 80%;">
+    <div class="card-body">
+        <h2 class="card-text"><%= @gossip.title %></h2>
+        <p class="card-text"><%= @gossip.content %></p>
+        <p> Auteur : <%= link_to "#{@gossip.user.firstName} #{@gossip.user.name}", controller: "profil", action: "show", id: @gossip.user.id %> </p>
+        <p> Ville de l'auteur : <%= @gossip.user.city.name %></p>
+    </div>
+    <%= link_to "Edit", controller: "gossip", action: "edit" %>
+</div>
+
