@@ -1,1 +1,10 @@
-Home
+<h1>Home</h1>
+<% @gossips.each do |gossip| %>
+    <div class="card mx-auto my-3" style="width: 80%;">
+        <div class="card-body">
+            <%= link_to gossip.user.name, controller: "profil", user: gossip.user.name %>
+            <p class="card-text"><%= gossip.content %></p>
+        </div>
+    </div>
+<% end %>
+
