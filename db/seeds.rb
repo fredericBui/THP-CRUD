@@ -11,7 +11,7 @@ Gossip.destroy_all
 City.destroy_all
 
 $numberOfCities = 10;
-$numberOfUsers = 3;
+$numberOfUsers = 8;
 $numberOfGossips = 5;
 
 $numberOfCities.times do
@@ -23,12 +23,24 @@ $numberOfCities.times do
 end
 
 $numberOfUsers.times do
-    $randomCharacter = Faker::TvShows::NewGirl.character
-    if $randomCharacter != User.find_by(name: $randomCharacter)
-        $user = User.create(name: $randomCharacter,email: "#{$randomCharacter}@gmail.com", city: City.find( 1 + rand($numberOfCities - 1) ))
+    $randomName = Faker::Name.name
+    $randomFirstName = Faker::Name.first_name
+    $email = "#{$randomFirstName}.#{$randomName}@gmail.com"
+
+    if $email != User.find_by(email: $email)
+        
+        $user = User.create(
+            name: $randomName, 
+            firstName: $randomFirstName,
+            email: $email,
+            age: rand(1..99)
+            description: Faker::Lorem.sentence ,
+            city: City.find( rand(1..$numberOfCities) )
+        )
+
     end
 end
 
 $numberOfGossips.times do
-    Gossip.create(content: Faker::TvShows::NewGirl.quote, user: User.find( 1 + rand($numberOfUsers - 1) ) )
+    Gossip.create(content: Faker::TvShows::NewGirl.quote, user: User.find(rand(1..$numberOfUsers) ) )
 end
