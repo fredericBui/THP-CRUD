@@ -1,0 +1,11 @@
+<h1>Profil show</h1>
+
+<h2 class="text-center">About <%= @user.firstName%> <%= @user.name%> : </h2>
+
+<ul class="list-group mx-4">
+    <li class="list-group-item">Id : <%= @user.id %></li>
+    <li class="list-group-item">Email : <%= @user.email%></li>
+    <li class="list-group-item">Age : <%= @user.age%> years old</li>
+    <li class="list-group-item">Description : <%= @user.description%></li>
+    <li class="list-group-item">City : <%= link_to @user.city.name, controller: "city", action: "show", id: @user.city.id %></li>
+<ul>
