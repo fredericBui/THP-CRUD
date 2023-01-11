@@ -1,0 +1,12 @@
+<h1>Gossip</h1>
+<% @gossips.each do |gossip| %>
+    <div class="card mx-auto my-3" style="width: 80%;">
+        <div class="card-body">
+            <h2 class="card-text"><%= gossip.title %></h2>
+            <p class="card-text"><%= gossip.content %></p>
+            <p> Auteur : <%= link_to gossip.user.name, controller: "profil", user: gossip.user.name %> </p>
+            <p> Ville de l'auteur : <%= gossip.user.city.name %></p>
+        </div>
+    </div>
+<% end %>
+
