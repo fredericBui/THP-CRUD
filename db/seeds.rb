@@ -33,7 +33,7 @@ $numberOfUsers.times do
             name: $randomName, 
             firstName: $randomFirstName,
             email: $email,
-            age: rand(1..99)
+            age: rand(1..99),
             description: Faker::Lorem.sentence ,
             city: City.find( rand(1..$numberOfCities) )
         )
@@ -42,5 +42,9 @@ $numberOfUsers.times do
 end
 
 $numberOfGossips.times do
-    Gossip.create(content: Faker::TvShows::NewGirl.quote, user: User.find(rand(1..$numberOfUsers) ) )
+    Gossip.create(
+        title: Faker::Lorem.word,
+        content: Faker::TvShows::NewGirl.quote, 
+        user: User.find(rand(1..$numberOfUsers) ) 
+    )
 end
