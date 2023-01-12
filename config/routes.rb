@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :profil
   resources :gossips
   resources :city
+  resources :comments
 
   # Defines the root path route ("/")
   root "gossips#index"
