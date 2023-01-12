@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :profil
   resources :gossips
   resources :city
+  post "/gossips/:id/new" , to: "comments#create"
   resources :comments
+  get "gossips/comments/:id/edit", to: "comments#edit"
 
   # Defines the root path route ("/")
   root "gossips#index"

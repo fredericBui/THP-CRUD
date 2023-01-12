@@ -1,1 +1,18 @@
-Comment edit
+<h1>Edit Article</h1>
+
+<%= form_with model: @comment do |form| %>
+
+  <div>
+    <%= form.label :content %><br>
+    <%= form.text_area :content %><br>
+    <% @comment.errors.full_messages_for(:content).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= button_to "delete", @comment, :method => :delete %>

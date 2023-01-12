@@ -6,6 +6,7 @@
             <p class="card-text"><%= gossip.content %></p>
             <p> Auteur : <%= link_to "#{gossip.user.firstName} #{gossip.user.name}", controller: "profil", action: "show", id: gossip.user.id %> </p>
             <p> Ville de l'auteur :  <%= link_to gossip.user.city.name, controller: "city", action: "show", id: gossip.user.city.id %></p>
+            <p> Nombre de commentaires : <%= gossip.comments.count %></p>
             <%= link_to "View", gossip %>
         </div>
     </div>
