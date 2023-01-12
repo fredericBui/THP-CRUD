@@ -14,7 +14,7 @@ City.destroy_all
 $numberOfCities = 10;
 $numberOfUsers = 8;
 $numberOfGossips = 5;
-$numberOfComments = 3;
+$numberOfComments = 12;
 
 $numberOfCities.times do
     $randomCity = Faker::Address.city
@@ -52,5 +52,5 @@ $numberOfGossips.times do
 end
 
 $numberOfComments.times do
-    Comment.create( content: Faker::Lorem.word, user: User.last(), gossip: Gossip.last() )
+    Comment.create( content: Faker::Lorem.word, user: User.find( rand(1..$numberOfUsers)), gossip: Gossip.find( rand(1..$numberOfGossips)) )
 end
