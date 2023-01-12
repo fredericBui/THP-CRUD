@@ -6,20 +6,29 @@
         <p> Auteur : <%= link_to "#{@gossip.user.firstName} #{@gossip.user.name}", controller: "profil", action: "show", id: @gossip.user.id %> </p>
         <p> Ville de l'auteur : <%= @gossip.user.city.name %></p>
     </div>
+    <div class="container text-center my-3">
+        <div class="row">
+            <div class="col">
+                <%= link_to "Edit", {controller: "gossips", action: "edit"}, class: "btn btn-primary" %>
+                 
+            </div>
+            <div class="col">
+                <%= button_to "Delete", @gossip, :method => :delete, :class => 'btn btn-danger' %>
+            </div>
+        </div>
+    </div>
     <ul class="list-group">
         <% @comments.each do |comment| %>
-            <li class="list-group-item">
+            <li class="list-group-item m-3">
                 <b><%= comment.user.name %></b>
                 <p><%= comment.content %></p>
-                <a href="comments/<%= comment.id %>/edit">Edit</a>
+                <a href="comments/<%= comment.id %>/edit" class="btn btn-primary">Edit</a>
             </li>
         <% end %>
-    <ul> 
-    <%= link_to "Edit", controller: "gossips", action: "edit" %>
-    <%= button_to "delete", @gossip, :method => :delete %>
+    <ul>
 
     <%= form_with url: "#{@gossip.id}/new", method: :post do |form| %>
-        <%= form.label :content, "Comment :" %>
+        <%= form.label :content, "Add a new comment :" %>
         <%= form.text_field :content %>
         <%= form.submit "Post" %>
     <% end %>
