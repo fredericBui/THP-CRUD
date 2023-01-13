@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
     def create
-        @gossip = Gossip.find(params[:id])
+        @gossip = Gossip.find(params[:gossip_id])
         @comment = Comment.create( 
             content: params[:content], 
             user: User.last(), 
@@ -16,13 +16,14 @@ class CommentsController < ApplicationController
 
     def edit
         @comment = Comment.find(params[:id])
+        @gossip = Gossip.find(params[:gossip_id])
     end
 
     def update
         @comment = Comment.find(params[:id])
 
         if @comment.update(comment_params)
-          redirect_to root_path
+          redirect_to gossip_path(@comment.gossip)
         else
           render :edit, status: :unprocessable_entity
         end
@@ -36,7 +37,7 @@ class CommentsController < ApplicationController
     end
 
     private
-        def comment_params
-            params.require(:comment).permit(:content)
-        end
+    def comment_params
+        params.require(:comment).permit(:content)
+    end
 end
