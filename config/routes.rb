@@ -6,11 +6,10 @@ Rails.application.routes.draw do
   get :team, to: "team#index"
 
   resources :profil
-  resources :gossips
   resources :city
-  post "/gossips/:id/new" , to: "comments#create"
-  resources :comments
-  get "gossips/comments/:id/edit", to: "comments#edit"
+  resources :gossips do
+    resources :comments
+  end
 
   # Defines the root path route ("/")
   root "gossips#index"
