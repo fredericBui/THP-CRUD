@@ -4,26 +4,14 @@
   <div>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
-    <% @gossip.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
   </div>
 
   <div>
     <%= form.label :content %><br>
     <%= form.text_area :content %><br>
-    <% @gossip.errors.full_messages_for(:content).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
   </div>
 
-  <div>
-    <%= form.label :user %><br>
-    <%= form.text_area :user %><br>
-    <% @gossip.errors.full_messages_for(:user).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+  <%= select_tag "tag", options_from_collection_for_select(@tags, "id", "name")%>
 
   <div>
     <%= form.submit %>

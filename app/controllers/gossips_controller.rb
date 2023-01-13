@@ -8,19 +8,22 @@ class GossipsController < ApplicationController
         @comments = @gossip.comments
     end
 
-    # def new
-    #     @gossip = Gossip.new
-    # end
+    def new
+        @gossip = Gossip.new
+        @tags = Tag.all
+    end
 
-    # def create
-    #     @gossip = Gossip.new(title: "test", content: "test", user: User.last())
+    def create
+        @gossip = Gossip.create(gossip_params )
+        @gossip.user = User.last()
+        @gossip.tag = Tag.find(params[:tag])
     
-    #     if @gossip.save
-    #       redirect_to @gossip
-    #     else
-    #       render :new, status: :unprocessable_entity
-    #     end
-    # end
+        if @gossip.save
+          redirect_to @gossip
+        else
+          render :new, status: :unprocessable_entity
+        end
+    end
 
     def edit
         @gossip = Gossip.find(params[:id])
@@ -29,6 +32,7 @@ class GossipsController < ApplicationController
 
     def update
         @gossip = Gossip.find(params[:id])
+        @gossip.tag = Tag.find(params[:tag])
 
         if @gossip.update(gossip_params)
           redirect_to @gossip
