@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+Tag.destroy_all
 Comment.destroy_all
 User.destroy_all
 Gossip.destroy_all
@@ -15,6 +16,11 @@ $numberOfCities = 10;
 $numberOfUsers = 8;
 $numberOfGossips = 5;
 $numberOfComments = 12;
+$numberOfTags = 10;
+
+$numberOfTags.times do
+    Tag.create(name: Faker::Emotion.adjective)
+end
 
 $numberOfCities.times do
     $randomCity = Faker::Address.city
@@ -47,7 +53,8 @@ $numberOfGossips.times do
     Gossip.create(
         title: Faker::Lorem.word,
         content: Faker::TvShows::NewGirl.quote, 
-        user: User.find(rand(1..$numberOfUsers) ) 
+        user: User.find(rand(1..$numberOfUsers) ),
+        tag: Tag.find(rand(1..$numberOfTags) )
     )
 end
 

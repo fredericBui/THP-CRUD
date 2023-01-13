@@ -16,6 +16,7 @@
       <div><%= message %></div>
     <% end %>
   </div>
+  <%= select_tag "tag", options_from_collection_for_select(@tags, "id", "name") %>
 
   <div>
     <%= form.submit %>

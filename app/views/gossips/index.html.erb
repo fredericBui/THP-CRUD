@@ -7,6 +7,7 @@
             <p> Auteur : <%= link_to "#{gossip.user.firstName} #{gossip.user.name}", controller: "profil", action: "show", id: gossip.user.id %> </p>
             <p> Ville de l'auteur :  <%= link_to gossip.user.city.name, controller: "city", action: "show", id: gossip.user.city.id %></p>
             <p> Nombre de commentaires : <%= gossip.comments.count %></p>
+            <p> Tag : <%= gossip.tag.name %></p>
             <%= link_to "View", gossip %>
         </div>
     </div>
