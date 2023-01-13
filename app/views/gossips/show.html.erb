@@ -22,12 +22,13 @@
             <li class="list-group-item m-3">
                 <b><%= comment.user.name %></b>
                 <p><%= comment.content %></p>
-                <a href="comments/<%= comment.id %>/edit" class="btn btn-primary">Edit</a>
+                <%= link_to "Edit", edit_gossip_comment_path(@gossip,comment), class: "btn btn-primary" %>
+                <%= button_to "Delete", gossip_comment_path(@gossip,comment), :method => :delete, :class => 'btn btn-danger' %>
             </li>
         <% end %>
     <ul>
 
-    <%= form_with url: "#{@gossip.id}/new", method: :post do |form| %>
+    <%= form_with url: gossip_comments_path(@gossip), method: :post do |form| %>
         <%= form.label :content, "Add a new comment :" %>
         <%= form.text_field :content %>
         <%= form.submit "Post" %>
